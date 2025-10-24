@@ -1,34 +1,33 @@
-//Desktop computer: adds GPU type
+//Desktop computer: uses COMPOSITION with Computer class - IMMUTABLE VERSION
+public final class Desktop {
+    private final Computer computer;
+    private final String GPUType;
 
-public class Desktop extends Computer { //Inherits from Computer
-    String GPUType=null;
-
-    //Constructors
-    public Desktop() {} //No-arg constructor
-
+    //Constructor
     public Desktop(String CPU, String RAM, String disk, String GPUType) {
-        //Inherited from Computer superclass
-        this.CPU=CPU;
-        this.RAM=RAM;
-        this.disk=disk;
-
-        //Only in Desktop subclass
-        this.GPUType=GPUType;
+        this.computer = new Computer(CPU, RAM, disk);
+        this.GPUType = GPUType;
     }
 
-    //Setter
-    public void setGPUType(String GPUType) {
-        this.GPUType=GPUType;
+    //Getters - no setters for immutability
+    public String getCPU() {
+        return computer.getCPU();
     }
 
-    //Getter
+    public String getRAM() {
+        return computer.getRAM();
+    }
+
+    public String getDisk() {
+        return computer.getDisk();
+    }
+
     public String getGPUType() {
         return this.GPUType;
     }
 
     //Return formatted version of data
     public String toString() {
-        return "Type:Desktop\tCPU:" + this.CPU + "\tRAM:" + this.RAM + "\tDisk:" + this.disk + "\tGPU:" + this.GPUType;
+        return "Type:Desktop\tCPU:" + getCPU() + "\tRAM:" + getRAM() + "\tDisk:" + getDisk() + "\tGPU:" + this.GPUType;
     }
-
 }

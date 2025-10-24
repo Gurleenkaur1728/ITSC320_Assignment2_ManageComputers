@@ -1,34 +1,33 @@
-//Laptop computer: adds screen size to other Computer info
+//Laptop computer: uses COMPOSITION with Computer class - IMMUTABLE VERSION
+public final class Laptop {
+    private final Computer computer;
+    private final String screenSize;
 
-public class Laptop extends Computer { //Laptop inherits from Computer
-    String screenSize=null;
-
-    //Constructors
-    public Laptop() {} //No-arg constructor
-
+    //Constructor
     public Laptop(String CPU, String RAM, String disk, String screenSize) {
-        //Inherited from Computer superclass
-        this.CPU=CPU;
-        this.RAM=RAM;
-        this.disk=disk;
-
-        //Only in Laptop subclass
-        this.screenSize=screenSize;
+        this.computer = new Computer(CPU, RAM, disk);
+        this.screenSize = screenSize;
     }
 
-    //Setter
-    public void setScreenSize(String screenSize) {
-        this.screenSize=screenSize;
+    //Getters - no setters for immutability
+    public String getCPU() {
+        return computer.getCPU();
     }
 
-    //Getter
+    public String getRAM() {
+        return computer.getRAM();
+    }
+
+    public String getDisk() {
+        return computer.getDisk();
+    }
+
     public String getScreenSize() {
         return this.screenSize;
     }
 
     //Return formatted version of data
     public String toString() {
-        return "Type:Laptop\tCPU:" + this.CPU + "\tRAM:" + this.RAM + "\tDisk:" + this.disk + "\tScreen:" + this.screenSize;
+        return "Type:Laptop\tCPU:" + getCPU() + "\tRAM:" + getRAM() + "\tDisk:" + getDisk() + "\tScreen:" + this.screenSize;
     }
-    
 }
